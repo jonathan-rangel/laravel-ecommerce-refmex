@@ -10,7 +10,15 @@ class CategoriesTableSeeder extends Seeder
     {
         Category::create([
             'name' => 'Iphone',
-            'image_path' => 'iphone-x.webp',
+            'image_path' => 'apple.jpg',
+        ]);
+        Category::create([
+            'name' => 'Samsung',
+            'image_path' => 'samsung.jpg',
+        ]);
+        Category::create([
+            'name' => 'Iphone',
+            'image_path' => 'xiaomi.jpg',
         ]);
     }
 }

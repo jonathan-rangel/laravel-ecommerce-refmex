@@ -24,34 +24,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($inventario as $e)
+                    <?php $__currentLoopData = $inventario; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td class="text-center">{{$e->id}}</td>
-                        <td class="text-center">{{$e->Category->name}}</td>
-                        <td class="text-center">{{$e->name}}</td>
-                        <td class="text-center">{{$e->state}}</td>
-                        <td class="text-center">{{$e->storage}}</td>
-                        <td class="text-center">{{$e->color}}</td>
-                        <td class="text-center">{{$e->description}}</td>
+                        <td class="text-center"><?php echo e($e->id); ?></td>
+                        <td class="text-center"><?php echo e($e->Category->name); ?></td>
+                        <td class="text-center"><?php echo e($e->name); ?></td>
+                        <td class="text-center"><?php echo e($e->state); ?></td>
+                        <td class="text-center"><?php echo e($e->storage); ?></td>
+                        <td class="text-center"><?php echo e($e->color); ?></td>
+                        <td class="text-center"><?php echo e($e->description); ?></td>
                         <td class="text-center">
-                            <img src="{{asset('storage'). '/' . $e->image_path}}" alt="" style="width: 100px; height: 100px">
+                            <img src="<?php echo e(asset('storage'). '/' . $e->image_path); ?>" alt="" style="width: 100px; height: 100px">
                         </td>
-                        @if($e->stock <= 0)
+                        <?php if($e->stock <= 0): ?>
                             <td class="text-center">Sin Stock</td>
-                        @else
-                            <td class="text-center">{{$e->stock}}</td>
-                        @endif
-                        <td class="text-center">${{$e->price}}</td>
+                        <?php else: ?>
+                            <td class="text-center"><?php echo e($e->stock); ?></td>
+                        <?php endif; ?>
+                        <td class="text-center">$<?php echo e($e->price); ?></td>
                         <td class="align-center">
-                            <button type="button" class="btn btn-danger" onclick="deleteProduct('{{$e->id}}','{{$e->name}}')">
+                            <button type="button" class="btn btn-danger" onclick="deleteProduct('<?php echo e($e->id); ?>','<?php echo e($e->name); ?>')">
                                 <i class="fas fa-trash-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-info" onclick="editProduct('{{$e->id}}','{{$e->Category->name}}','{{$e->category->id}}','{{$e->name}}','{{$e->stock}}','{{$e->price}}','{{$e->image_path}}','{{$e->description}}')">
+                                <button type="button" class="btn btn-info" onclick="editProduct('<?php echo e($e->id); ?>','<?php echo e($e->Category->name); ?>','<?php echo e($e->category->id); ?>','<?php echo e($e->name); ?>','<?php echo e($e->stock); ?>','<?php echo e($e->price); ?>','<?php echo e($e->image_path); ?>','<?php echo e($e->description); ?>')">
                                 <i class="fas fa-pen"></i>
                             </button>
                         </td>
                     </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
@@ -66,3 +66,4 @@
         </div>
     </section>
 </div>
+<?php /**PATH C:\Users\Jonathan\Desktop\Laravel\laravel-ecommerce-refmex\resources\views/layouts/inventario.blade.php ENDPATH**/ ?>

@@ -1,5 +1,5 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+    @import  url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
     body {
         font-family: "Poppins", sans-serif;
@@ -155,23 +155,24 @@
         </div>
         <div class="row">
             <!-- Single Product -->
-            @foreach ($products as $product)
+            <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-1" class="single-product">
-                        <a href="{{ url('/producto/'.$product->Category->name.'/'.$product->id)}}">
+                        <a href="<?php echo e(url('/producto/'.$product->Category->name.'/'.$product->id)); ?>">
                             <div class="part-1"
-                                style="background-image: url(/storage/{{ $product->image_path }}); background-size: cover;">
+                                style="background-image: url(/storage/<?php echo e($product->image_path); ?>); background-size: cover;">
                             </div>
                         </a>
                         <div class="part-2">
-                            <h3 class="product-title"> {{ $product->name }} </h3>
-                            <h4 class="product-old-price">${{ $product->price }} </h4>
-                            <h4 class="product-price">${{ $product->price }} </h4>
+                            <h3 class="product-title"> <?php echo e($product->name); ?> </h3>
+                            <h4 class="product-old-price">$<?php echo e($product->price); ?> </h4>
+                            <h4 class="product-price">$<?php echo e($product->price); ?> </h4>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 </section>
 <!-- partial -->
+<?php /**PATH C:\Users\Jonathan\Desktop\Laravel\laravel-ecommerce-refmex\resources\views/layouts/popular_products.blade.php ENDPATH**/ ?>
