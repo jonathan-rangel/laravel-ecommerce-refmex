@@ -1,8 +1,6 @@
-@extends('layouts.layout_admin')
-
-@section('contenido')
-    @extends('layouts.categorias')
-    @extends('layouts.sidebar')
+<?php $__env->startSection('contenido'); ?>
+    
+    
 
 
     <!-- Jquery CDN -->
@@ -26,7 +24,7 @@
                             </div>
                             <form action="/guardaNuevaCategoria" method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
-                                    @csrf
+                                    <?php echo csrf_field(); ?>
                                     <input type="hidden" name="identificador" value="">
                                     <label for="">Categoría</label>
                                     <input class="form-control" type="text" name="category" id="category" value="" required>
@@ -60,7 +58,7 @@
                             </div>
                             <form action="/guardaNuevaCategoria" method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
-                                    @csrf
+                                    <?php echo csrf_field(); ?>
                                     <input type="hidden" name="identificador" value="${id}">
                                     <label for="">Categoría</label>
                                     <input class="form-control" type="text" name="category" id="category" value="${categoria}" required>
@@ -119,3 +117,7 @@
             $("#modalDelete").modal("show");
         }
     </script>
+
+<?php echo $__env->make('layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.categorias', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.layout_admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\laravel-ecommerce-refmex\resources\views/admin_categorias.blade.php ENDPATH**/ ?>

@@ -1,8 +1,6 @@
-@extends('layouts.layout_admin')
+<?php $__env->startSection('contenido'); ?>
 
-@section('contenido')
-@extends('layouts.inventario')
-@extends('layouts.sidebar')
+
 
 
 <!-- Jquery CDN -->
@@ -25,15 +23,15 @@
                     </div>
                     <form action="/storeProduct" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <input type="hidden" name="identificador" value="">
                             <label for="">Categoría del producto</label>
                             <div class="d-flex flex-row mb-2">
                                 <select class="form-select" aria-label="" name="categoria" id="categoria" required>
                                     <option value="" selected>Selecciona una categoría</option>
-                                    @foreach($categorias as $e)
-                                    <option value="{{$e->id}}">{{$e->name}}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($e->id); ?>"><?php echo e($e->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                             <input class="form-control" type="hidden" name="category_id" id="input-category" value="" required>
@@ -159,14 +157,14 @@
                     </div>
                     <form action="/editProduct" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <input type="hidden" name="identificador" value="${id}">
                             <label for="">Categoría del producto</label>
                             <div class="d-flex flex-row mb-2">
                                 <select class="form-select" aria-label="" name="" id="" value="${categoria}" required>
-                                    @foreach($categorias as $e)
-                                    <option value="{{$e->id}}">{{$e->name}}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($e->id); ?>"><?php echo e($e->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                             <input class="form-control" type="hidden" name="category_id" id="input-category" value="${categoria_id}" required>
@@ -254,7 +252,7 @@
                     </div>
                     <form action="/guardaNuevaCategoria" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <input type="hidden" name="identificador" value="">
                             <label for="">Categoría</label>
                             <input class="form-control" type="text" name="category" id="category" value="" required>
@@ -276,4 +274,8 @@
         $("#modalCategoria").modal("show");
     }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.inventario', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.layout_admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\laravel-ecommerce-refmex\resources\views/admin_inventario.blade.php ENDPATH**/ ?>

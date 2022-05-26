@@ -15,8 +15,14 @@ class ProductController extends Controller
         else
             $producto = new Product();
 
-        $path = $request->file('image_path')->store('public');
-        $file = basename($path);
+        $path = $request->file('image_path')->storeAs(
+            'public',
+            $request->file('image')->getClientOriginalName()
+        );
+        $file = $path;
+
+        // $path = $request->file('image_path')->store('public');
+        // $file = basename($path);
 
         $producto->category_id = $request->category_id;
         $producto->name = $request->name;
@@ -27,7 +33,7 @@ class ProductController extends Controller
         $producto->stock = $request->stock;
         $producto->price = $request->price;
         $producto->image_path = $file;
-        if($request->popular == "Sí")
+        if ($request->popular == "Sí")
             $producto->popular = 1;
         else
             $producto->popular = 0;
@@ -53,14 +59,15 @@ class ProductController extends Controller
         $categories = category::all();
         return view('all_products')->with('smartphones', $smartphones)->with('categories', $categories);
     }
-    public function showOneProduct($category,$id)
+    public function showOneProduct($category, $id)
     {
         $categories = Category::all();
         $producto = Product::find($id);
         return view('product')->with('producto', $producto)->with('categories', $categories);
     }
 
-    public function showSmartphonesByCategory($category) {
+    public function showSmartphonesByCategory($category)
+    {
         $categories = Category::all();
         $category = Category::where('name', $category)->first();
         $smarpthones = Product::where('category_id', $category->id)->get();

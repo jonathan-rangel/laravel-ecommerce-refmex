@@ -17,28 +17,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td class="text-center">{{ $category->id }}</td>
-                            <td class="text-center">{{ $category->name }}</td>
+                            <td class="text-center"><?php echo e($category->id); ?></td>
+                            <td class="text-center"><?php echo e($category->name); ?></td>
                             <td class="text-center">
-                                <img src="{{asset('storage'). '/' . $category->image_path}}" alt="" style="width: 100px; height: 100px">
+                                <img src="<?php echo e(asset('storage'). '/' . $category->image_path); ?>" alt="" style="width: 100px; height: 100px">
                             </td>
                             <td class="text-center align-center">
                                 <button type="button" class="btn btn-danger"
-                                    onclick="deleteCategory('{{ $category->id }}','{{ $category->name }}')">
+                                    onclick="deleteCategory('<?php echo e($category->id); ?>','<?php echo e($category->name); ?>')">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                                 <button type="button" class="btn btn-info"
-                                    onclick="editCategory('{{ $category->id }}','{{ $category->name }}','{{ $category->image_path }}')">
+                                    onclick="editCategory('<?php echo e($category->id); ?>','<?php echo e($category->name); ?>','<?php echo e($category->image_path); ?>')">
                                     <i class="fas fa-pen"></i>
                                 </button>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
         <div id="modalContainer"></div>
     </section>
 </div>
+<?php /**PATH C:\laragon\www\laravel-ecommerce-refmex\resources\views/layouts/categorias.blade.php ENDPATH**/ ?>

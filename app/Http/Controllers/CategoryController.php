@@ -20,12 +20,15 @@ class CategoryController extends Controller
         else
             $categoria = new Category();
 
-        $path = $request->file('image_path')->store('public');
-        $file = basename($path);
+        $path = $request->file('image_path')->storeAs(
+            "/public",
+            $request->file('image_path')->getClientOriginalName()
+        );
+        $file =  $request->file('image_path')->getClientOriginalName();
 
         $categoria->name = $request->category;
         $categoria->image_path = $file;
-
+        
         $categoria->save();
 
         if (isset($request->identificador))
@@ -34,7 +37,8 @@ class CategoryController extends Controller
         return redirect()->back();
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $producto = Category::find($id);
         $producto->delete();
         return redirect('/admin/inventario');

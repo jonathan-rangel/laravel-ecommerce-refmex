@@ -28,7 +28,7 @@ class CreateProductsTable extends Migration
             $table->string('color');
             $table->foreign('category_id')
                 ->references('id')
-                ->on('categories')->onDelete('set null');
+                ->on('categories')->onDelete('cascade');
             $table->foreign('cart_id')
                 ->references('id')
                 ->on('carts')->onDelete('set null');
