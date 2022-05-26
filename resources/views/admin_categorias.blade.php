@@ -55,7 +55,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content" style="width:100%;">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Añadir Nueva Categoria</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Editar categoria</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form action="/guardaNuevaCategoria" method="POST" enctype="multipart/form-data">

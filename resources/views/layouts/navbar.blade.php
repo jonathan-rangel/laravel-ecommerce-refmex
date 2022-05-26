@@ -33,13 +33,13 @@
             @guest
                 <li class="nav-item">
                     <a href="{{ route('login') }}">
-                        <button class="btn-success me-2">{{ __('Login') }}</button>
+                        <button class="btn-success me-2">{{ __('Iniciar sesión') }}</button>
                     </a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item">
                         <a href="{{ route('register') }}">
-                            <button class="btn-info">{{ __('Register') }}</button>
+                            <button class="btn-info">{{ __('Registrarse') }}</button>
                         </a>
                     </li>
                 @endif
@@ -47,7 +47,7 @@
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="" width="32" height="32" class="rounded-circle me-2">
                         <strong>{{ Auth::user()->name }}</strong>
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">

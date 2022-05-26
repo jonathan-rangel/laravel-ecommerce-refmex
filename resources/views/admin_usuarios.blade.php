@@ -1,9 +1,5 @@
 @extends('layouts.layout_admin')
 
-@section('stylesheet')
-{{asset('css/styleShalala.css')}}
-@endsection
-
 @section('contenido')
 @extends('layouts.usuarios')
 @extends('layouts.sidebar')

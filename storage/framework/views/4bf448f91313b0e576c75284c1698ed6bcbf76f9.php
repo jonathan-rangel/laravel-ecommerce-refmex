@@ -1,10 +1,3 @@
-
-
-<?php $__env->startSection('stylesheet'); ?>
-<?php echo e(asset('css/styleShalala.css')); ?>
-
-<?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('contenido'); ?>
 
 
@@ -144,6 +137,7 @@
     }
 </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('layouts.administradores', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('layouts.layout_admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Jonathan\Desktop\Laravel\laravel-ecommerce-refmex\resources\views/admin_administradores.blade.php ENDPATH**/ ?>

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('contenido'); ?>
 
 
@@ -135,7 +133,7 @@
                     </div>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <a href="/delete/${id}" class="btn btn-danger">
+                            <a href="/delete/product/${id}" class="btn btn-danger">
                                 Eliminar
                             </a>
                     </div>
@@ -219,7 +217,7 @@
                             <br>
 
                             <label for="">Imagen del producto</label>
-                            <input class="form-control mt-3" type="file" name="image_path" id="image_path" value="${imagen}">
+                            <input class="form-control mt-3" type="file" name="image_path" id="image_path" value="${imagen}" required>
                             <br>
 
                             <label for="popular">¿Producto popular?</label>
@@ -240,40 +238,6 @@
 
         modalContainer.innerHTML = html;
         $("#modalEditar").modal("show");
-    }
-
-    function addCategory() {
-        const modalContainer = document.getElementById("modalContainer2");
-        var html =
-            `<div class="modal fade" id="modalCategoria" tabindex="-2" aria-labelledby="" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content" style="width:100%;">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Añadir Nueva Categoria</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="/guardaNuevaCategoria" method="POST" enctype="multipart/form-data">
-                        <div class="modal-body">
-                            <?php echo csrf_field(); ?>
-                            <input type="hidden" name="identificador" value="">
-                            <label for="">Categoría</label>
-                            <input class="form-control" type="text" name="category" id="category" value="" required>
-                            <br>
-                            <label for="image_path">Imagen del slider de categorías</label>
-                            <input class="form-control mt-3" type="file" name="image_path" id="image_path" value="" required>
-                            <br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>`;
-
-        modalContainer.innerHTML = html;
-        $("#modalCategoria").modal("show");
     }
 </script>
 <?php $__env->stopSection(); ?>

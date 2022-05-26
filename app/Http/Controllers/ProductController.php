@@ -17,12 +17,10 @@ class ProductController extends Controller
 
         $path = $request->file('image_path')->storeAs(
             'public',
-            $request->file('image')->getClientOriginalName()
+            $request->file('image_path')->getClientOriginalName()
         );
-        $file = $path;
 
-        // $path = $request->file('image_path')->store('public');
-        // $file = basename($path);
+        $file = $request->file('image_path')->getClientOriginalName();
 
         $producto->category_id = $request->category_id;
         $producto->name = $request->name;
@@ -78,8 +76,12 @@ class ProductController extends Controller
     {
         if (isset($request->identificador)) {
             $producto = Product::find($request->identificador);
-            $path = $request->file('image_path')->store('public');
-            $file = basename($path);
+            $path = $request->file('image_path')->storeAs(
+                'public',
+                $request->file('image_path')->getClientOriginalName()
+            );
+
+            $file = $request->file('image_path')->getClientOriginalName();
 
             $producto->category_id = $request->category_id;
             $producto->name = $request->name;

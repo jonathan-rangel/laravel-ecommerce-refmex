@@ -2,13 +2,13 @@
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100%;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <img src="{{asset('assets/img/shalala.png')}}" alt="" width="108" height="108">
             <span class="fs-2">RefMex</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li id="inventario">
-                <a href="{{ url('/admin/inventario') }}" class="nav-link text-white" aria-current="page" id="inventario">
+                <a href="{{ url('/admin/inventario') }}" class="nav-link text-white" aria-current="page"
+                    id="inventario">
                     <i class="fas fa-clipboard-list"></i>
                     Inventario
                 </a>
@@ -34,7 +34,8 @@
         </ul>
         <hr>
         <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                 <strong>Administrador</strong>
             </a>
@@ -71,25 +72,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($inventario as $e)
-                    <tr>
-                        <th scope="row">{{$e->id}}</th>
-                        <td>{{$e->categoria}}</td>
-                        <td>{{$e->nombre}}</td>
-                        <td>
-                            <img src="{{asset('storage'). '/' . $e->imagen}}" alt="" style="width: 200px; height: 200px">
-                        </td>
-                        <td>{{$e->stock}}</td>
-                        <td>${{$e->precio}}</td>
-                        <td>
-                            <button type="button" class="btn btn-danger" onclick="deleteProduct('{{$e->id}}','{{$e->nombre}}')">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                            <button type="button" class="btn btn-info" onclick="editProduct('{{$e->id}}','{{$e->nombre}}')">
-                                <i class="fas fa-pen"></i>
-                            </button>
-                        </td>
-                    </tr>
+                    @foreach ($inventario as $e)
+                        <tr>
+                            <th scope="row">{{ $e->id }}</th>
+                            <td>{{ $e->categoria }}</td>
+                            <td>{{ $e->nombre }}</td>
+                            <td>
+                                <img src="{{ asset('storage') . '/' . $e->imagen }}" alt=""
+                                    style="width: 200px; height: 200px">
+                            </td>
+                            <td>{{ $e->stock }}</td>
+                            <td>${{ $e->precio }}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger"
+                                    onclick="deleteProduct('{{ $e->id }}','{{ $e->nombre }}')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                                <button type="button" class="btn btn-info"
+                                    onclick="editProduct('{{ $e->id }}','{{ $e->nombre }}')">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

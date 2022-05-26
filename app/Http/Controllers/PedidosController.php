@@ -17,11 +17,11 @@ class PedidosController extends Controller
     public function buyCart(Request $request){
         $total = 0; //Venta total a cobrar
 
-        $id = $request->user_id; //ID del usuario a guardar su pedido
+        $id = $request->user_id; 
 
         $cart = ProductsByCar::where('user_id', $id)->get(); //Se obtienen los productos
 
-        foreach ($cart as $c) { //For Each de Productos en el carrito del Usuario
+        foreach ($cart as $c) {
             $quantity = json_encode($c->quantity, JSON_NUMERIC_CHECK);
             $price = json_encode($c->product->price, JSON_NUMERIC_CHECK);
             $mult = ($quantity * $price);
@@ -37,9 +37,9 @@ class PedidosController extends Controller
 
         $pedido->user_id = $id;
         $pedido->total = $total;
-        $pedido->save(); //Se ha creado el pedido en la base de datos
+        $pedido->save();
 
-        foreach ($cart as $c) { //For Each para crear el pedido en la base de datos
+        foreach ($cart as $c) {
             $products_by_pedidos = new ProductsByPedido();
 
             $products_by_pedidos->user_id = $pedido->user_id;
@@ -47,10 +47,10 @@ class PedidosController extends Controller
             $products_by_pedidos->pedido_id = $pedido->id;
             $products_by_pedidos->quantity = $c->quantity;
 
-            $products_by_pedidos->save(); //Se ha creado el pedido en la base de datos
+            $products_by_pedidos->save();
         }
 
-        foreach ($cart as $c) { //For Each de Productos para vaciar carrito
+        foreach ($cart as $c) {
             $producto = ProductsByCar::find($c->id);
             $producto->delete();
         }
